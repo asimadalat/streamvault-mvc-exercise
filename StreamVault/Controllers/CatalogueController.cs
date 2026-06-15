@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using StreamVault.Models;
+using StreamVault.Models.ViewModels;
 using StreamVault.Services.Interfaces;
 
 namespace StreamVault.Controllers;
@@ -16,4 +17,16 @@ public sealed class CatalogueController(ICatalogueService catalogueService) : Co
 
         return View(filteredCatalogueItems);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> CreateMovie() => View(new CreateMovieViewModel());
+
+    [HttpGet]
+    public async Task<IActionResult> CreateSeries() => View(new CreateSeriesViewModel());
+
+    [HttpGet]
+    public async Task<IActionResult> CreateAudiobook() => View(new CreateAudiobookViewModel());
+
+    [HttpGet]
+    public async Task<IActionResult> CreateMusicAlbum() => View(new CreateMusicAlbumViewModel());
 }

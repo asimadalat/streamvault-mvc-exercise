@@ -1,0 +1,46 @@
+@model StreamVault.Models.ViewModels.CreateMusicAlbumViewModel
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Add Music Album</h2>
+
+    <form asp-action="CreateMusicAlbum" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ReleaseDate" class="form-label"></label>
+            <input asp-for="ReleaseDate" type="date" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Artist" class="form-label"></label>
+            <input asp-for="Artist" class="form-control" />
+            <span asp-validation-for="Artist" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="RecordLabel" class="form-label">Record Label</label>
+            <input asp-for="RecordLabel" class="form-control" />
+            <span asp-validation-for="RecordLabel" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TrackCount" class="form-label">Number of Tracks</label>
+            <input asp-for="TrackCount" class="form-control" />
+            <span asp-validation-for="TrackCount" type="number" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

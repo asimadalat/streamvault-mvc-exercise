@@ -1,0 +1,46 @@
+@model StreamVault.Models.ViewModels.CreateAudiobookViewModel
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Add Audiobook</h2>
+
+    <form asp-action="CreateAudiobook" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ReleaseDate" class="form-label"></label>
+            <input asp-for="ReleaseDate" type="date" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Author" class="form-label"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Narrator" class="form-label"></label>
+            <input asp-for="Narrator" class="form-control" />
+            <span asp-validation-for="Narrator" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DurationMinutes" class="form-label">Duration (minutes)</label>
+            <input asp-for="DurationMinutes" class="form-control" type="number" />
+            <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+@model StreamVault.Models.ViewModels.CreateSeriesViewModel
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Add Series</h2>
+
+    <form asp-action="CreateSeries" method="post">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ReleaseDate" class="form-label"></label>
+            <input asp-for="ReleaseDate" type="date" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SeasonCount" class="form-label"></label>
+            <input asp-for="SeasonCount" type="number" class="form-control" />
+            <span asp-validation-for="SeasonCount" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="EpisodeCount" class="form-label"></label>
+            <input asp-for="EpisodeCount" class="form-control" type="number" />
+            <span asp-validation-for="EpisodeCount" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
