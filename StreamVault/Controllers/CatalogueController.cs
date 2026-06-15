@@ -30,6 +30,22 @@ public sealed class CatalogueController(ICatalogueService catalogueService) : Co
     [HttpGet]
     public async Task<IActionResult> CreateMusicAlbum() => View(new CreateMusicAlbumViewModel());
 
+    [HttpGet]
+    public async Task<IActionResult> Edit(Guid id)
+    {
+        var item = await catalogueService.GetByIdAsync(id);
+        if (item == null) return NotFound();
+
+        return item switch
+        {
+            Movie m => View("EditMovie", new EditMovieViewModel(m)),
+            Series s => View("EditSeries", new EditSeriesViewModel(s)),
+            Audiobook a => View("EditAudiobook", new EditAudiobookViewModel(a)),
+            MusicAlbum ma => View("EditMusicAlbum", new EditMusicAlbumViewModel(ma)),
+            _ => RedirectToAction(nameof(Index))
+        };
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateMovie(CreateMovieViewModel viewModel)
     {

@@ -50,7 +50,7 @@
                 <td>@item.DisplayType</td>
                 <td>@item.GetTypeSpecificProperties()</td>
                 <td>
-                    @*TODO: edit and delete actions*@
+                    <a asp-controller="catalogue" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm">Edit</a>
                 </td>
             </tr>
         }
