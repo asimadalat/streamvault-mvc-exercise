@@ -29,4 +29,15 @@ public sealed class MusicAlbum : CatalogueItem
         RecordLabel = viewModel.RecordLabel;
         TrackCount = viewModel.TrackCount;
     }
+
+    public MusicAlbum(EditMusicAlbumViewModel viewModel)
+    {
+        Id = viewModel.Id;
+        Title = viewModel.Title;
+        Description = viewModel.Description;
+        ReleaseDate = viewModel.ReleaseDate;
+        Artist = viewModel.Artist;
+        RecordLabel = viewModel.RecordLabel;
+        TrackCount = viewModel.TrackCount;
+    }
 }

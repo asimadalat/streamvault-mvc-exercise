@@ -24,4 +24,14 @@ public sealed class Series : CatalogueItem
         SeasonCount = viewModel.SeasonCount;
         EpisodeCount = viewModel.EpisodeCount;
     }
+
+    public Series(EditSeriesViewModel viewModel)
+    {
+        Id = viewModel.Id;
+        Title = viewModel.Title;
+        Description = viewModel.Description;
+        ReleaseDate = viewModel.ReleaseDate;
+        SeasonCount = viewModel.SeasonCount;
+        EpisodeCount = viewModel.EpisodeCount;
+    }
 }

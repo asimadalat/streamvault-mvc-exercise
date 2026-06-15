@@ -24,4 +24,14 @@ public sealed class Movie : CatalogueItem
         Director = viewModel.Director;
         DurationMinutes = viewModel.DurationMinutes;
     }
+
+    public Movie(EditMovieViewModel viewModel)
+    {
+        Id = viewModel.Id;
+        Title = viewModel.Title;
+        Description = viewModel.Description;
+        ReleaseDate = viewModel.ReleaseDate;
+        Director = viewModel.Director;
+        DurationMinutes = viewModel.DurationMinutes;
+    }
 }

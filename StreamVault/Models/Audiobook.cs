@@ -27,4 +27,15 @@ public sealed class Audiobook : CatalogueItem
         Narrator = viewModel.Narrator;
         DurationMinutes = viewModel.DurationMinutes;
     }
+
+    public Audiobook(EditAudiobookViewModel viewModel)
+    {
+        Id = viewModel.Id;
+        Title = viewModel.Title;
+        Description = viewModel.Description;
+        ReleaseDate = viewModel.ReleaseDate;
+        Author = viewModel.Author;
+        Narrator = viewModel.Narrator;
+        DurationMinutes = viewModel.DurationMinutes;
+    }
 }

@@ -81,4 +81,40 @@ public sealed class CatalogueController(ICatalogueService catalogueService) : Co
         await catalogueService.CreateAsync(new MusicAlbum(viewModel));
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpPost]
+    public async Task<IActionResult> EditMovie(EditMovieViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.UpdateAsync(new Movie(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditSeries(EditSeriesViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.UpdateAsync(new Series(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditAudiobook(EditAudiobookViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.UpdateAsync(new Audiobook(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditMusicAlbum(EditMusicAlbumViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.UpdateAsync(new MusicAlbum(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
 }
