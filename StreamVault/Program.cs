@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StreamVault.Data;
+using StreamVault.Services;
+using StreamVault.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StreamVaultDbContext>(options =>
     options.UseSqlite("Data Source=StreamVault.db"));
+
+builder.Services.AddScoped<ICatalogueService, CatalogueService>();
 
 var app = builder.Build();
 
@@ -27,9 +31,9 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Catalogue}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-DbManager.EnsureCreated(app);
+DbManager.EnsureCreatedAndSeeded(app);
 
 app.Run();

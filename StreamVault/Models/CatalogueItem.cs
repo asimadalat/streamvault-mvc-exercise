@@ -9,4 +9,9 @@ public abstract class CatalogueItem
     public string? Description { get; set; }
 
     public DateTime ReleaseDate { get; set; }
+
+
+    public virtual string DisplayType => GetType().Name;
+
+    public abstract string GetTypeSpecificProperties();
 }

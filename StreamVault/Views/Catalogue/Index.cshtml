@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CatalogueItem>
+@{
+    ViewData["Title"] = "Catalogue";
+}
+
+<h2>StreamVault Catalogue</h2>
+
+<form method="get" action="/catalogue" class="row mb-2">
+    <div class="col-md-6">
+        <input type="text" name="searchTerm" class="form-control" placeholder="Search by title">
+    </div>
+
+    <div class="col-md-4">
+        <select name="contentType" class="form-select">
+            <option value="">All types</option>
+            <option value="Movie">Movies</option>
+            <option value="Series">Series</option>
+            <option value="Audiobook">Audiobooks</option>
+            <option value="Music Album">Music Albums</option>
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Filter</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content Type</th>
+            <th>Details</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (CatalogueItem item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.DisplayType</td>
+                <td>@item.GetTypeSpecificProperties()</td>
+                <td>
+                    @*TODO: edit and delete actions*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

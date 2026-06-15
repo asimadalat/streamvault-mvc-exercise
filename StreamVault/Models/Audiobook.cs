@@ -7,4 +7,10 @@ public sealed class Audiobook : CatalogueItem
     public string Narrator { get; set; } = default!;
 
     public int DurationMinutes { get; set; }
+
+
+    public override string GetTypeSpecificProperties()
+    {
+        return $"Author: {Author}, Narrator: {Narrator} ({DurationMinutes} mins)";
+    }
 }
