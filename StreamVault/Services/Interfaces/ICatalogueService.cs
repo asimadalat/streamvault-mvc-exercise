@@ -1,10 +1,11 @@
 using StreamVault.Models;
+using StreamVault.Models.ViewModels;
 
 namespace StreamVault.Services.Interfaces;
 
 public interface ICatalogueService
 {
-    Task<IEnumerable<CatalogueItem>> GetCatalogueItemsAsync(
+    Task<CatalogueIndexViewModel> GetCatalogueItemsAsync(
         string? searchTerm,
         string? contentType);
 

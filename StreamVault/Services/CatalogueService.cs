@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using StreamVault.Data;
 using StreamVault.Models;
+using StreamVault.Models.ViewModels;
 using StreamVault.Services.Interfaces;
 
 namespace StreamVault.Services;
@@ -29,7 +31,7 @@ public sealed class CatalogueService(StreamVaultDbContext db) : ICatalogueServic
             .Where(item => item.Id == id)
             .FirstOrDefaultAsync();
 
-    async Task<IEnumerable<CatalogueItem>> ICatalogueService.GetCatalogueItemsAsync(
+    async Task<CatalogueIndexViewModel> ICatalogueService.GetCatalogueItemsAsync(
         string? searchTerm,
         string? contentType)
     {
@@ -48,7 +50,15 @@ public sealed class CatalogueService(StreamVaultDbContext db) : ICatalogueServic
                 _ => query
             };
 
-        return await query.ToListAsync();
+        return new CatalogueIndexViewModel
+        {
+            Items = await query.ToListAsync(),
+            TotalItemCount = await db.CatalogueItems.CountAsync(),
+            MovieCount = await db.CatalogueItems.OfType<Movie>().CountAsync(),
+            SeriesCount = await db.CatalogueItems.OfType<Series>().CountAsync(),
+            AudiobookCount = await db.CatalogueItems.OfType<Audiobook>().CountAsync(),
+            MusicAlbumCount = await db.CatalogueItems.OfType<MusicAlbum>().CountAsync()
+        };
     }
 
     async Task ICatalogueService.UpdateAsync(CatalogueItem item)

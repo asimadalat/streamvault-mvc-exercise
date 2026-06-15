@@ -1,9 +1,46 @@
-﻿@model IEnumerable<CatalogueItem>
+﻿@model StreamVault.Models.ViewModels.CatalogueIndexViewModel
 @{
     ViewData["Title"] = "Catalogue";
 }
 
 <h2>Catalogue</h2>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="border rounded text-center py-2">
+            <small class="text-muted d-block">Total</small>
+            <strong>@Model.TotalItemCount</strong>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="border rounded text-center py-2">
+            <small class="text-muted d-block">Movies</small>
+            <strong>@Model.MovieCount</strong>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="border rounded text-center py-2">
+            <small class="text-muted d-block">Series</small>
+            <strong>@Model.SeriesCount</strong>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="border rounded text-center py-2">
+            <small class="text-muted d-block">Books</small>
+            <strong>@Model.AudiobookCount</strong>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="border rounded text-center py-2">
+            <small class="text-muted d-block">Albums</small>
+            <strong>@Model.MusicAlbumCount</strong>
+        </div>
+    </div>
+</div>
 
 <form method="get" action="/catalogue" class="row mb-2">
     <div class="col-md-6">
@@ -43,7 +80,7 @@
     </thead>
 
     <tbody>
-        @foreach (CatalogueItem item in Model)
+        @foreach (CatalogueItem item in Model.Items)
         {
             <tr>
                 <td>@item.Title</td>
