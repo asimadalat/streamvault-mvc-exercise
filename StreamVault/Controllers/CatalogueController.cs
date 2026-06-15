@@ -117,4 +117,11 @@ public sealed class CatalogueController(ICatalogueService catalogueService) : Co
         await catalogueService.UpdateAsync(new MusicAlbum(viewModel));
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    {
+        await catalogueService.DeleteAsync(id);
+        return RedirectToAction(nameof(Index));
+    }
 }
