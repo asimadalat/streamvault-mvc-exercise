@@ -1,3 +1,5 @@
+using StreamVault.Models.ViewModels;
+
 namespace StreamVault.Models;
 
 public sealed class Audiobook : CatalogueItem
@@ -12,5 +14,17 @@ public sealed class Audiobook : CatalogueItem
     public override string GetTypeSpecificProperties()
     {
         return $"Author: {Author}, Narrator: {Narrator} ({DurationMinutes} mins)";
+    }
+
+    public Audiobook() { }
+
+    public Audiobook(CreateAudiobookViewModel viewModel)
+    {
+        Title = viewModel.Title;
+        Description = viewModel.Description;
+        ReleaseDate = viewModel.ReleaseDate;
+        Author = viewModel.Author;
+        Narrator = viewModel.Narrator;
+        DurationMinutes = viewModel.DurationMinutes;
     }
 }

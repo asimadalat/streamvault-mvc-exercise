@@ -13,7 +13,7 @@ public class CreateMusicAlbumViewModel : CreateCatalogueItemViewModel
     public string RecordLabel { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Number of tracks is mandatory")]
-    [Range(1, 1000, ErrorMessage = "Number of tracks must be postive and below 1,000")]
+    [Range(1, 1000, ErrorMessage = "Number of tracks must be postive and 1,000 maximum")]
     public int TrackCount { get; set; }
 }
 

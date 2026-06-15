@@ -10,10 +10,10 @@ public class CreateAudiobookViewModel : CreateCatalogueItemViewModel
 
     [Required(ErrorMessage = "Narrator is mandatory")]
     [StringLength(100)]
-    public int Narrator { get; set; }
+    public string Narrator { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Duration is mandatory")]
-    [Range(1, 6000, ErrorMessage = "Duration must be postive and below 6,000 minutes")]
+    [Range(1, 6000, ErrorMessage = "Duration must be postive and 6,000 minutes maximum")]
     public int DurationMinutes { get; set; }
 }
 

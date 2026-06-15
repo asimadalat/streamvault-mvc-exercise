@@ -29,4 +29,40 @@ public sealed class CatalogueController(ICatalogueService catalogueService) : Co
 
     [HttpGet]
     public async Task<IActionResult> CreateMusicAlbum() => View(new CreateMusicAlbumViewModel());
+
+    [HttpPost]
+    public async Task<IActionResult> CreateMovie(CreateMovieViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.CreateAsync(new Movie(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateSeries(CreateSeriesViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.CreateAsync(new Series(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateAudiobook(CreateAudiobookViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.CreateAsync(new Audiobook(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateMusicAlbum(CreateMusicAlbumViewModel viewModel)
+    {
+        if (!ModelState.IsValid) return View(viewModel);
+
+        await catalogueService.CreateAsync(new MusicAlbum(viewModel));
+        return RedirectToAction(nameof(Index));
+    }
 }
