@@ -7,14 +7,21 @@ namespace StreamVault.Services;
 
 public sealed class CatalogueService(StreamVaultDbContext db) : ICatalogueService
 {
-    Task ICatalogueService.CreateAsync(CatalogueItem item)
+    async Task ICatalogueService.CreateAsync(CatalogueItem item)
     {
-        throw new NotImplementedException();
+        db.CatalogueItems.Add(item);
+        await db.SaveChangesAsync();
     }
 
-    Task ICatalogueService.DeleteAsync(Guid id)
+    async Task ICatalogueService.DeleteAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var toDelete = await db.CatalogueItems
+            .FirstOrDefaultAsync(item => item.Id == id);
+
+        if (toDelete is null) return;
+
+        db.CatalogueItems.Remove(toDelete);
+        await db.SaveChangesAsync();
     }
 
     async Task<CatalogueItem?> ICatalogueService.GetByIdAsync(Guid id) =>
@@ -44,8 +51,9 @@ public sealed class CatalogueService(StreamVaultDbContext db) : ICatalogueServic
         return await query.ToListAsync();
     }
 
-    Task ICatalogueService.UpdateAsync(CatalogueItem item)
+    async Task ICatalogueService.UpdateAsync(CatalogueItem item)
     {
-        throw new NotImplementedException();
+        db.CatalogueItems.Update(item);
+        await db.SaveChangesAsync();
     }
 }
